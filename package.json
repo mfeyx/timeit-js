@@ -1,0 +1,27 @@
+{
+  "name": "timeit-js",
+  "version": "0.0.1",
+  "description": "Performance Measuring for Node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfeyx/timeit-js.git"
+  },
+  "keywords": [
+    "Time",
+    "Performance",
+    "JavaScript",
+    "Performance",
+    "Time",
+    "Measuring"
+  ],
+  "author": "Markus Feiks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mfeyx/timeit-js/issues"
+  },
+  "homepage": "https://github.com/mfeyx/timeit-js#readme"
+}
