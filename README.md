@@ -17,10 +17,10 @@ const timeit = require('timeit-js')
 
 ```js
 /**
- * Test your function's execution time.
+ * Test the execution time of your function
  * @params {Function} fn
  * @params {*} args
- * @params {Number} e Exections
+ * @params {Number} e Executions
  * @params {Number} r Repetitions
  */
 timeit.measure(fn, args, e=100000, r=1)
