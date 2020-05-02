@@ -2,12 +2,12 @@ function roundTo(decimalPlaces, numberToRound) {
   return +(Math.round(numberToRound + `e+${decimalPlaces}`)  + `e-${decimalPlaces}`)
 }
 
-function startTimer() {
+function startTimer () {
   const time = process.hrtime()
   return time
 }
 
-function endTimer(time) {
+function endTimer (time) {
   const diff = process.hrtime(time)
   const NS_PER_SEC = 1e9
   const result = (diff[0] * NS_PER_SEC + diff[1])
@@ -15,7 +15,7 @@ function endTimer(time) {
   return roundTo(6, elapsed)
 }
 
-function timer(fn, args, executions=100000) {
+function timer (fn, args, e) {
   const start = startTimer()
   for (var i = 1; i < executions; i++) {
     fn(...args)
@@ -23,15 +23,13 @@ function timer(fn, args, executions=100000) {
   return endTimer(start)
 }
 
-function timeIt (fn, args, r=100, e=100000) {
-
+function measure (fn, args, e=100000, r=1) {
   let results = []
   for (let i = 0; i < r; i++) {
     results.push(timer(fn, args, e))
   }
-
   const result = results.reduce((pv, cv) => pv + cv, 0)
   return result / results.length
 }
 
-module.exports = timeIt
+module.exports = measure
