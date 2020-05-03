@@ -37,10 +37,4 @@ function timeit (fn, args=[], options={}) {
   return ms
 }
 
-function sum () {
-  return [...arguments].reduce((p, c) => p+c, 0)
-}
-
-timeit(sum, args=[1, 2, 3, 4], options={e: 100000, r: 1, d: 6})
-
 module.exports = timeit
