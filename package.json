@@ -1,6 +1,6 @@
 {
   "name": "timeit-js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Performance Measuring for Node JS",
   "main": "index.js",
   "scripts": {
