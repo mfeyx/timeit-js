@@ -20,18 +20,27 @@ function timeit (fn, args=[], options={}) {
     const diff = process.hrtime(start)
     const elapsed = (diff[0] * NS_PER_SEC + diff[1]) * 0.0000010
 
-    const r = elapsed / e // time for one execution
-    results.push(+(Math.round(r + `e+${6}`)  + `e-${6}`))
+    const result = elapsed / e
+
+    results.push(+(Math.round(result + `e+${6}`)  + `e-${6}`))
   }
 
-  const ms = (results.reduce((p, c) => p + c, 0)) // results.length
+  const ms = (results.reduce((p, c) => p + c, 0)) / results.length
+
   if (l) {
     console.log(`Function   : ${fn.name}()`)
     console.log(`Average    : ${ms.toFixed(d)}ms`)
     console.log(`Repetitions: ${r}`)
     console.log(`Executions : ${e}`)
   }
+
   return ms
 }
+
+function sum () {
+  return [...arguments].reduce((p, c) => p+c, 0)
+}
+
+timeit(sum, args=[1, 2, 3, 4], options={e: 100000, r: 1, d: 6})
 
 module.exports = timeit

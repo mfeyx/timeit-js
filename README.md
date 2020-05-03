@@ -48,5 +48,5 @@ function sum () {
   return [...arguments].reduce((p, c) => p+c, 0)
 }
 
-timeit(sum, args=[1, 2, 3, 4], options={e: 100000, r: 100, d: 2})
+timeit(sum, args=[1, 2, 3, 4], options={e: 100000, r: 100, d: 6})
 ```
