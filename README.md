@@ -1,5 +1,5 @@
 # timeit-js
-Simple Node Performance Measurement
+Simple Performance Measurement for Node.js
 
 Measure the average execution time of a function. If you find any bugs or have suggestions feel free to help and fork the package.
 
