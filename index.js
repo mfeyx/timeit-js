@@ -23,7 +23,7 @@ function timer (fn, args, e) {
   return endTimer(start)
 }
 
-function measure (fn, args, e=100000, r=1) {
+function timeit (fn, args, e=100000, r=1) {
   let results = []
   for (let i = 0; i < r; i++) {
     results.push(timer(fn, args, e))
@@ -32,4 +32,4 @@ function measure (fn, args, e=100000, r=1) {
   return result / results.length
 }
 
-module.exports = measure
+module.exports = timeit

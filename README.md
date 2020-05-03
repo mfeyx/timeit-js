@@ -23,5 +23,5 @@ const timeit = require('timeit-js')
  * @params {Number} e Executions
  * @params {Number} r Repetitions
  */
-timeit.measure(fn, args, e=100000, r=1)
+timeit(fn, args, e=100000, r=1)
 ```
