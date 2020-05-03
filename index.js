@@ -1,6 +1,6 @@
 /**
  * Measure the average execution time of a function
- * @param {Function} fn A function for performance measure
+ * @param {Function} fn A function for performance measurement
  * @param {Array} args Function arguments
  * @param {Object} options
  * @returns {Number} Result in milliseconds
