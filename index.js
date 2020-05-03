@@ -1,35 +1,37 @@
-function roundTo(decimalPlaces, numberToRound) {
-  return +(Math.round(numberToRound + `e+${decimalPlaces}`)  + `e-${decimalPlaces}`)
-}
+/**
+ * Measure the average execution time of a function
+ * @param {Function} fn A function for performance measure
+ * @param {Array} args Function arguments
+ * @param {Object} options
+ * @returns {Number} Result in milliseconds
+ */
+function timeit (fn, args=[], options={}) {
+  const valid = fn && typeof fn === 'function'
+  if(!valid) { throw new Error('No function provided.') }
 
-function startTimer () {
-  const time = process.hrtime()
-  return time
-}
-
-function endTimer (time) {
-  const diff = process.hrtime(time)
   const NS_PER_SEC = 1e9
-  const result = (diff[0] * NS_PER_SEC + diff[1])
-  const elapsed = result * 0.0000010
-  return roundTo(6, elapsed)
-}
+  const { e, r, l, d } = { e:1000, r:1, l:true, d:6, ...options }
 
-function timer (fn, args, e) {
-  const start = startTimer()
-  for (var i = 1; i < executions; i++) {
-    fn(...args)
-  }
-  return endTimer(start)
-}
-
-function timeit (fn, args, e=100000, r=1) {
   let results = []
   for (let i = 0; i < r; i++) {
-    results.push(timer(fn, args, e))
+
+    const start = process.hrtime()
+    for (let i = 1; i < e; i++) { fn(args) }
+    const diff = process.hrtime(start)
+    const elapsed = (diff[0] * NS_PER_SEC + diff[1]) * 0.0000010
+
+    const r = elapsed / e // time for one execution
+    results.push(+(Math.round(r + `e+${6}`)  + `e-${6}`))
   }
-  const result = results.reduce((pv, cv) => pv + cv, 0)
-  return result / results.length
+
+  const ms = (results.reduce((p, c) => p + c, 0)) // results.length
+  if (l) {
+    console.log(`Function   : ${fn.name}()`)
+    console.log(`Average    : ${ms.toFixed(d)}ms`)
+    console.log(`Repetitions: ${r}`)
+    console.log(`Executions : ${e}`)
+  }
+  return ms
 }
 
 module.exports = timeit

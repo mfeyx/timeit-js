@@ -1,6 +1,8 @@
 # timeit-js
 Simple Node Performance Measuring
 
+Measure the average execution time of a function. If you find any bugs or have suggestions feel free to help and fork the package.
+
 ## Installation
 
 ```sh
@@ -13,15 +15,38 @@ npm i timeit-js
 const timeit = require('timeit-js')
 ```
 
-## API
+## Timeit Function
 
 ```js
 /**
- * Test the execution time of your function
- * @params {Function} fn
- * @params {*} args
- * @params {Number} e Executions
- * @params {Number} r Repetitions
+ * Measure the average execution time of a function
+ * @param {Function} fn A function for performance measure
+ * @param {Array} args Function arguments
+ * @param {Object} options
+ * @returns {Number} Result in milliseconds
  */
-timeit(fn, args, e=100000, r=1)
+timeit(fn, args=[], options={})
+```
+
+
+## Options
+
+| parameter | Option | default
+|-----------|---------|--------:
+`e` | Function Executions | 1000
+`r` | Test repetitions | 1
+`l` | Show result in logs | true
+`d` | Number of decimals in Logging text | 6
+
+
+## Example
+
+```js
+const timeit = require('timeit-js')
+
+function sum () {
+  return [...arguments].reduce((p, c) => p+c, 0)
+}
+
+timeit(sum, args=[1, 2, 3, 4], {e: 100000, r: 100, d: 2})
 ```
