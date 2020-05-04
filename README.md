@@ -33,9 +33,9 @@ timeit(fn, args=[], options={})
 
 | Parameter | Option | Default
 |-----------|---------|--------:
-`e` | Function Executions | 1000
-`r` | Test repetitions | 1
-`l` | Show result in logs | true
+`e` | Number of function executions | 1000
+`r` | Number of test repetitions | 1
+`l` | Show timeit-result in logs | true
 `d` | Number of decimals in Logging text | 6
 
 
